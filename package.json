@@ -1,0 +1,22 @@
+{
+  "name": "quick-ts-proto",
+  "version": "1.0.0",
+  "description": "",
+  "author": "gaoyang",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "node bin/gen-grpc-web ./test/proto ./test/gen",
+    "ttt": "grpc_tools_node_protoc"
+  },
+  "keywords": [
+    "ts-proto",
+    "proto",
+    "protobuf",
+    "typescript-protobuf"
+  ],
+  "devDependencies": {
+    "grpc-tools": "^1.12.4",
+    "ts-proto": "^1.153.2"
+  }
+}
