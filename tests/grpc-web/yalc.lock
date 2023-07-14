@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "quick-ts-proto": {
+      "signature": "5608a6b1891838b3e2c22fa0b4c93138",
+      "file": true
+    }
+  }
+}

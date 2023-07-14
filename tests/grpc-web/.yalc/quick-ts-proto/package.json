@@ -1,0 +1,23 @@
+{
+  "name": "quick-ts-proto",
+  "version": "1.0.0",
+  "description": "",
+  "author": "gaoyang",
+  "license": "MIT",
+  "main": "index.js",
+  "bin": {
+    "gen-grpc-web": "./bin/gen-grpc-web/index.js"
+  },
+  "scripts": {},
+  "keywords": [
+    "ts-proto",
+    "proto",
+    "protobuf",
+    "typescript-protobuf"
+  ],
+  "files": [
+    "bin",
+    "node_modules/.bin/*"
+  ],
+  "yalcSig": "5608a6b1891838b3e2c22fa0b4c93138"
+}

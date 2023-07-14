@@ -4,7 +4,7 @@ import "google/protobuf/empty.proto";
 
 service ExampleGrpcService {
   rpc Login (LoginRequest) returns (LoginResponse);
-  rpc Subscribe (google.protobuf.Empty) returns (stream SubscribeResponse);
+  rpc SubscribeUserInfoChanged (google.protobuf.Empty) returns (stream SubscribeUserInfoChangedResponse);
 }
 
 message LoginRequest {
@@ -16,7 +16,6 @@ message LoginResponse {
   bool success = 1;
 }
 
-
-message SubscribeResponse {
+message SubscribeUserInfoChangedResponse {
   string message = 1;
 }
