@@ -1,9 +1,8 @@
 {
   "name": "quick-ts-proto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Quickly generate gRPC code.",
   "author": "gaoyang",
-  "license": "MIT",
   "main": "index.js",
   "bin": {
     "gen-grpc-web": "./bin/gen-grpc-web/index.js"
@@ -11,6 +10,13 @@
   "scripts": {
     "test:grpc-web": "node ./bin/gen-grpc-web/index.js ./tests/grpc-web/proto ./tests/grpc-web/src/grpc"
   },
+  "dependencies": {
+    "grpc-tools": "^1.12.4",
+    "ts-proto": "^1.153.2"
+  },
+  "files": [
+    "bin"
+  ],
   "keywords": [
     "ts-proto",
     "proto",
@@ -18,11 +24,10 @@
     "typescript-protobuf",
     "grpc-web"
   ],
-  "dependencies": {
-    "grpc-tools": "^1.12.4",
-    "ts-proto": "^1.153.2"
+  "license": "MIT",
+  "repository": "gaoyang/quick-ts-proto",
+  "bugs": {
+    "url": "https://github.com/gaoyang/quick-ts-proto/issues"
   },
-  "files": [
-    "bin"
-  ]
+  "homepage": "https://github.com/gaoyang/quick-ts-proto"
 }

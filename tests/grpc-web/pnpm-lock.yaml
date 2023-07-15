@@ -5,7 +5,7 @@ specifiers:
   browser-headers: ^0.4.1
   google-protobuf: ^3.21.2
   protobufjs: ^7.2.4
-  quick-ts-proto: file:.yalc/quick-ts-proto
+  quick-ts-proto: ^1.0.0
   rxjs: ^7.8.1
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
   rxjs: 7.8.1
 
 devDependencies:
-  quick-ts-proto: file:.yalc/quick-ts-proto
+  quick-ts-proto: 1.0.0
 
 packages:
 
@@ -29,8 +29,8 @@ packages:
       google-protobuf: 3.21.2
     dev: false
 
-  /@mapbox/node-pre-gyp/1.0.10:
-    resolution: {integrity: sha512-4ySo4CjzStuprMwk35H5pPbkymjv1SF3jGLj6rAHp/xT/RF7TL7bd9CTm1xDY49K2qF7jmR/g7k+SkLETP6opA==}
+  /@mapbox/node-pre-gyp/1.0.11:
+    resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
     dependencies:
       detect-libc: 2.0.1
@@ -234,7 +234,7 @@ packages:
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@mapbox/node-pre-gyp': 1.0.10
+      '@mapbox/node-pre-gyp': 1.0.11
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -390,6 +390,17 @@ packages:
       '@types/node': 20.4.2
       long: 5.2.3
 
+  /quick-ts-proto/1.0.0:
+    resolution: {integrity: sha512-yGh7g8WGn/VUqznu8WIekNhv/rZMQEs5qmKLuVPpVRG5PCedV6sTzRwuV+e/O8SzCcdy4UuKMFVfeAgYo14Pdw==}
+    hasBin: true
+    dependencies:
+      grpc-tools: 1.12.4
+      ts-proto: 1.153.3
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: true
+
   /readable-stream/3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
@@ -529,17 +540,4 @@ packages:
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
-    dev: true
-
-  file:.yalc/quick-ts-proto:
-    resolution: {directory: .yalc/quick-ts-proto, type: directory}
-    name: quick-ts-proto
-    version: 1.0.0
-    hasBin: true
-    dependencies:
-      grpc-tools: 1.12.4
-      ts-proto: 1.153.3
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
     dev: true
