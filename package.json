@@ -1,14 +1,14 @@
 {
   "name": "quick-ts-proto",
   "version": "1.0.0",
-  "description": "Quickly generate gRPC code.",
+  "description": "A CLI tool to quickly generate gRPC code.",
   "author": "gaoyang",
   "main": "index.js",
   "bin": {
     "gen-grpc-web": "./bin/gen-grpc-web/index.js"
   },
   "scripts": {
-    "test:grpc-web": "node ./bin/gen-grpc-web/index.js ./tests/grpc-web/proto ./tests/grpc-web/src/grpc"
+    "test:gen-grpc-web": "node ./bin/gen-grpc-web/index.js ./tests/grpc-web/proto ./tests/grpc-web/src/grpc"
   },
   "dependencies": {
     "grpc-tools": "^1.12.4",

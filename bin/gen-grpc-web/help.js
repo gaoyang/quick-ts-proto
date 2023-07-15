@@ -1,25 +1,7 @@
-# quick-ts-proto
-A CLI tool to quickly generate gRPC code.
+'use strict'
 
-
-## 💿 Installation
-
-```bash
-$ npm install quick-ts-proto --save-dev
-# or
-$ pnpm add -D quick-ts-proto
-# or
-$ yarn add quick-ts-proto --dev
-```
-
-## 📖 Usage
-
-### CLI Commands
-
-This `quick-ts-proto` package currently provides 1 CLI commands.
-
-#### `gen-grpc-web` command
-```
+module.exports = function printHelp(output) {
+  output.write(`
 Usage:
   $ gen-grpc-web [--help | -h | --version | -v]
   $ gen-grpc-web [protobufDir] [outDir] [OPTIONS]
@@ -36,4 +18,7 @@ Options:
 
 Examples:
   $ gen-grpc-web ./proto ./src/grpc
-```
+`)
+
+  return Promise.resolve(null)
+}
