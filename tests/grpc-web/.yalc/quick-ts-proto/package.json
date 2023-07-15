@@ -13,11 +13,15 @@
     "ts-proto",
     "proto",
     "protobuf",
-    "typescript-protobuf"
+    "typescript-protobuf",
+    "grpc-web"
   ],
+  "dependencies": {
+    "grpc-tools": "^1.12.4",
+    "ts-proto": "^1.153.2"
+  },
   "files": [
-    "bin",
-    "node_modules/.bin/*"
+    "bin"
   ],
-  "yalcSig": "5608a6b1891838b3e2c22fa0b4c93138"
+  "yalcSig": "2f4d36cc7a002a4cd26593eed8c73a06"
 }

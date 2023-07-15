@@ -8,20 +8,24 @@
   "bin": {
     "gen-grpc-web": "./bin/gen-grpc-web/index.js"
   },
-  "scripts": {},
+  "scripts": {
+    "test:grpc-web": "node ./bin/gen-grpc-web/index.js ./tests/grpc-web/proto ./tests/grpc-web/src/grpc"
+  },
   "keywords": [
     "ts-proto",
     "proto",
     "protobuf",
-    "typescript-protobuf"
+    "typescript-protobuf",
+    "grpc-web"
   ],
-  "devDependencies": {
+  "dependencies": {
     "grpc-tools": "^1.12.4",
-    "ts-proto": "^1.153.2",
+    "ts-proto": "^1.153.2"
+  },
+  "devDependencies": {
     "yalc": "1.0.0-pre.53"
   },
   "files": [
-    "bin",
-    "node_modules/.bin/*"
+    "bin"
   ]
 }

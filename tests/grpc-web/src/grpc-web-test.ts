@@ -1,4 +1,4 @@
-import { ExampleGrpcServiceClientImpl, GrpcWebImpl } from '../gen/example'
+import { ExampleGrpcServiceClientImpl, GrpcWebImpl } from './grpc/example'
 
 const rpc = new GrpcWebImpl('http://localhost:9090', {})
 const client = new ExampleGrpcServiceClientImpl(rpc)
