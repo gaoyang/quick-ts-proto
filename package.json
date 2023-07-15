@@ -22,9 +22,6 @@
     "grpc-tools": "^1.12.4",
     "ts-proto": "^1.153.2"
   },
-  "devDependencies": {
-    "yalc": "1.0.0-pre.53"
-  },
   "files": [
     "bin"
   ]
