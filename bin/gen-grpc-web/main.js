@@ -21,7 +21,11 @@ module.exports = function genGrpcWeb(args, stdout, stderr) {
     command.push(protoc)
     command.push(`--plugin=protoc-gen-ts_proto=${plugin}`)
     command.push(`--ts_proto_out=${outDir}`)
-    command.push(`--ts_proto_opt=outputClientImpl=grpc-web`)
+    command.push(
+      `--ts_proto_opt=env=browser,outputClientImpl=grpc-web${
+        args[2] === '--only-types' ? ',outputEncodeMethods=false' : ''
+      }`
+    )
     command.push(`-I=${protoDir} ${protoDir}/*.proto`)
 
     const promise = new Promise((resolve, reject) => {
