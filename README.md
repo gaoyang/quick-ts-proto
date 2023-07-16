@@ -1,6 +1,6 @@
 # quick-ts-proto
-A CLI tool to quickly generate gRPC code.
 
+A CLI tool to quickly generate gRPC code.
 
 ## 💿 Installation
 
@@ -19,6 +19,7 @@ $ yarn add quick-ts-proto --dev
 This `quick-ts-proto` package currently provides 1 CLI commands.
 
 #### `gen-grpc-web` command
+
 ```
 Usage:
   $ gen-grpc-web [--help | -h | --version | -v]
@@ -36,4 +37,20 @@ Options:
 
 Examples:
   $ gen-grpc-web ./proto ./src/grpc
+```
+
+Install necessary tools:
+```
+npm install protobufjs long rxjs browser-headers @improbable-eng/grpc-web
+```
+
+Code example.
+```ts
+import { ExampleGrpcServiceClientImpl, GrpcWebImpl } from './grpc/example'
+
+const rpc = new GrpcWebImpl('http://localhost:9090', {})
+const client = new ExampleGrpcServiceClientImpl(rpc)
+client.SubscribeUserInfoChanged({}).subscribe(response => {
+  console.log(response.message)
+})
 ```
