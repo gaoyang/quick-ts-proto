@@ -15,7 +15,10 @@ module.exports = function genGrpcWeb(args, stdout, stderr) {
     fs.mkdirSync(outDir, { recursive: true })
 
     const protoc = path.resolve(__dirname, '../../node_modules/.bin/grpc_tools_node_protoc')
-    const plugin = path.resolve(__dirname, '../../node_modules/.bin/protoc-gen-ts_proto')
+    const plugin = path.resolve(
+      __dirname,
+      '../../node_modules/.bin/protoc-gen-ts_proto' + (process.platform === 'win32' ? '.cmd' : '')
+    )
 
     const command = []
     command.push(protoc)
