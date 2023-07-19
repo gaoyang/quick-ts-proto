@@ -4,6 +4,22 @@ const fs = require('fs')
 const path = require('path')
 const cp = require('child_process')
 
+const getDirs = dir => {
+  const result = []
+
+  const files = fs.readdirSync(dir)
+  for (const file of files) {
+    const filePath = path.join(dir, file)
+    const stat = fs.statSync(filePath)
+    if (stat.isDirectory()) {
+      result.push(filePath)
+      result.push(...getDirs(filePath))
+    }
+  }
+
+  return result
+}
+
 module.exports = function genGrpcWeb(args, stdout, stderr) {
   try {
     const protoDir = path.resolve(process.cwd(), args[0])
@@ -29,7 +45,12 @@ module.exports = function genGrpcWeb(args, stdout, stderr) {
         args[2] === '--only-types' ? ',outputEncodeMethods=false' : ''
       }`
     )
+
     command.push(`-I=${protoDir} ${protoDir}/*.proto`)
+    getDirs(protoDir).forEach(dir => {
+      console.log(dir);
+      command.push(` ${dir}/*.proto`)
+    })
 
     const promise = new Promise((resolve, reject) => {
       const child_process = cp.exec(command.join(' '), (error, stdout, stderr) => {
