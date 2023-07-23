@@ -5,8 +5,8 @@ dependencies:
     specifier: ^1.12.4
     version: 1.12.4
   ts-proto:
-    specifier: ^1.156.0
-    version: 1.156.0
+    specifier: ^1.156.1
+    version: 1.156.1
 
 packages:
 
@@ -71,8 +71,8 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@types/node@20.4.2:
-    resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
+  /@types/node@20.4.4:
+    resolution: {integrity: sha512-CukZhumInROvLq3+b5gLev+vgpsIqC2D0deQr/yS1WnxvmYLlJXZpaQrQiseMY+6xusl79E04UjWoqyr+t1/Ew==}
     dev: false
 
   /abbrev@1.1.1:
@@ -368,7 +368,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.4.2
+      '@types/node': 20.4.4
       long: 5.2.3
     dev: false
 
@@ -457,21 +457,21 @@ packages:
       dprint-node: 1.0.7
     dev: false
 
-  /ts-proto-descriptors@1.14.0:
-    resolution: {integrity: sha512-xqLA6cBTfof+mZ/sIw/pZviyhnWWcWqRBjyjaMW5O4fIogpawT4aa0wI8rKh0rYIrQzoHxLugmFu4+rdiWaGEQ==}
+  /ts-proto-descriptors@1.15.0:
+    resolution: {integrity: sha512-TYyJ7+H+7Jsqawdv+mfsEpZPTIj9siDHS6EMCzG/z3b/PZiphsX+mWtqFfFVe5/N0Th6V3elK9lQqjnrgTOfrg==}
     dependencies:
       long: 5.2.3
       protobufjs: 7.2.4
     dev: false
 
-  /ts-proto@1.156.0:
-    resolution: {integrity: sha512-GnOxEAD1mRkiqV9VLv48GrNdps8gXp+vE9rWToCPyIxCIjVjkH3ls8iXxRXOS9LSwueJT8F+N9w7Xy3zftUecA==}
+  /ts-proto@1.156.1:
+    resolution: {integrity: sha512-zgEGjaUySjWs7e4vdg5xNk/nxMinQnIMG+0KcvEBmE1vy03Yvc7tmeoJdB7qt/p/+0taEUwEdbjegR5t1B+nEA==}
     hasBin: true
     dependencies:
       case-anything: 2.1.13
       protobufjs: 7.2.4
       ts-poet: 6.5.0
-      ts-proto-descriptors: 1.14.0
+      ts-proto-descriptors: 1.15.0
     dev: false
 
   /util-deprecate@1.0.2:
