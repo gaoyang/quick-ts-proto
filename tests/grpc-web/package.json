@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:proto": "gen-grpc-web ./proto ./src/grpc"
+    "build:proto": "gen-grpc-web ../proto ./src/grpc"
   },
   "keywords": [],
   "author": "",

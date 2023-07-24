@@ -8,7 +8,8 @@
     "gen-grpc-web": "./bin/gen-grpc-web/index.js"
   },
   "scripts": {
-    "test:gen-grpc-web": "node ./bin/gen-grpc-web/index.js ./tests/grpc-web/proto ./tests/grpc-web/src/grpc"
+    "test:gen-grpc": "node ./bin/gen-grpc/index.js ./tests/proto ./tests/grpc/src/grpc",
+    "test:gen-grpc-web": "node ./bin/gen-grpc-web/index.js ./tests/proto ./tests/grpc-web/src/grpc"
   },
   "dependencies": {
     "grpc-tools": "^1.12.4",
