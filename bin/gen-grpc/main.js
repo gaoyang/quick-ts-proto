@@ -40,7 +40,8 @@ module.exports = function genGrpc(args, stdout, stderr) {
     command.push(protoc)
     command.push(`--plugin=protoc-gen-ts_proto=${plugin}`)
     command.push(`--ts_proto_out=${outDir}`)
-
+    command.push(`--ts_proto_opt=outputServices=grpc-js`)
+    
     command.push(`-I=${protoDir} ${protoDir}/*.proto`)
     getDirs(protoDir).forEach(dir => {
       console.log(dir);

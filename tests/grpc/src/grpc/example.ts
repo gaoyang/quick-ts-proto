@@ -1,7 +1,19 @@
 /* eslint-disable */
+import {
+  CallOptions,
+  ChannelCredentials,
+  Client,
+  ClientOptions,
+  ClientReadableStream,
+  ClientUnaryCall,
+  handleServerStreamingCall,
+  handleUnaryCall,
+  makeGenericClientConstructor,
+  Metadata,
+  ServiceError,
+  UntypedServiceImplementation,
+} from "@grpc/grpc-js";
 import * as _m0 from "protobufjs/minimal";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
 import { Empty } from "./google/protobuf/empty";
 
 export const protobufPackage = "";
@@ -214,40 +226,68 @@ export const SubscribeUserInfoChangedResponse = {
   },
 };
 
-export interface ExampleGrpcService {
-  Login(request: LoginRequest): Promise<LoginResponse>;
-  SubscribeUserInfoChanged(request: Empty): Observable<SubscribeUserInfoChangedResponse>;
+export type ExampleGrpcServiceService = typeof ExampleGrpcServiceService;
+export const ExampleGrpcServiceService = {
+  login: {
+    path: "/ExampleGrpcService/Login",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: LoginRequest) => Buffer.from(LoginRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => LoginRequest.decode(value),
+    responseSerialize: (value: LoginResponse) => Buffer.from(LoginResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => LoginResponse.decode(value),
+  },
+  subscribeUserInfoChanged: {
+    path: "/ExampleGrpcService/SubscribeUserInfoChanged",
+    requestStream: false,
+    responseStream: true,
+    requestSerialize: (value: Empty) => Buffer.from(Empty.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => Empty.decode(value),
+    responseSerialize: (value: SubscribeUserInfoChangedResponse) =>
+      Buffer.from(SubscribeUserInfoChangedResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => SubscribeUserInfoChangedResponse.decode(value),
+  },
+} as const;
+
+export interface ExampleGrpcServiceServer extends UntypedServiceImplementation {
+  login: handleUnaryCall<LoginRequest, LoginResponse>;
+  subscribeUserInfoChanged: handleServerStreamingCall<Empty, SubscribeUserInfoChangedResponse>;
 }
 
-export const ExampleGrpcServiceServiceName = "ExampleGrpcService";
-export class ExampleGrpcServiceClientImpl implements ExampleGrpcService {
-  private readonly rpc: Rpc;
-  private readonly service: string;
-  constructor(rpc: Rpc, opts?: { service?: string }) {
-    this.service = opts?.service || ExampleGrpcServiceServiceName;
-    this.rpc = rpc;
-    this.Login = this.Login.bind(this);
-    this.SubscribeUserInfoChanged = this.SubscribeUserInfoChanged.bind(this);
-  }
-  Login(request: LoginRequest): Promise<LoginResponse> {
-    const data = LoginRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "Login", data);
-    return promise.then((data) => LoginResponse.decode(_m0.Reader.create(data)));
-  }
-
-  SubscribeUserInfoChanged(request: Empty): Observable<SubscribeUserInfoChangedResponse> {
-    const data = Empty.encode(request).finish();
-    const result = this.rpc.serverStreamingRequest(this.service, "SubscribeUserInfoChanged", data);
-    return result.pipe(map((data) => SubscribeUserInfoChangedResponse.decode(_m0.Reader.create(data))));
-  }
+export interface ExampleGrpcServiceClient extends Client {
+  login(
+    request: LoginRequest,
+    callback: (error: ServiceError | null, response: LoginResponse) => void,
+  ): ClientUnaryCall;
+  login(
+    request: LoginRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: LoginResponse) => void,
+  ): ClientUnaryCall;
+  login(
+    request: LoginRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: LoginResponse) => void,
+  ): ClientUnaryCall;
+  subscribeUserInfoChanged(
+    request: Empty,
+    options?: Partial<CallOptions>,
+  ): ClientReadableStream<SubscribeUserInfoChangedResponse>;
+  subscribeUserInfoChanged(
+    request: Empty,
+    metadata?: Metadata,
+    options?: Partial<CallOptions>,
+  ): ClientReadableStream<SubscribeUserInfoChangedResponse>;
 }
 
-interface Rpc {
-  request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
-  clientStreamingRequest(service: string, method: string, data: Observable<Uint8Array>): Promise<Uint8Array>;
-  serverStreamingRequest(service: string, method: string, data: Uint8Array): Observable<Uint8Array>;
-  bidirectionalStreamingRequest(service: string, method: string, data: Observable<Uint8Array>): Observable<Uint8Array>;
-}
+export const ExampleGrpcServiceClient = makeGenericClientConstructor(
+  ExampleGrpcServiceService,
+  "ExampleGrpcService",
+) as unknown as {
+  new (address: string, credentials: ChannelCredentials, options?: Partial<ClientOptions>): ExampleGrpcServiceClient;
+  service: typeof ExampleGrpcServiceService;
+};
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
