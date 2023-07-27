@@ -1,5 +1,10 @@
-import { Server } from '@grpc/grpc-js'
-import { ExampleGrpcServiceServer, LoginResponse, SubscribeUserInfoChangedResponse } from './grpc/example'
+import { Server, ServerCredentials } from '@grpc/grpc-js'
+import {
+  ExampleGrpcServiceServer,
+  ExampleGrpcServiceService,
+  LoginResponse,
+  SubscribeUserInfoChangedResponse
+} from './grpc/example'
 
 const exampleGrpcServiceImpl: ExampleGrpcServiceServer = {
   login(call, callback) {
@@ -18,3 +23,7 @@ const exampleGrpcServiceImpl: ExampleGrpcServiceServer = {
 }
 
 const server = new Server()
+server.addService(ExampleGrpcServiceService, exampleGrpcServiceImpl)
+server.bindAsync('localhost:5555', ServerCredentials.createInsecure(), () => {
+  server.start()
+})
