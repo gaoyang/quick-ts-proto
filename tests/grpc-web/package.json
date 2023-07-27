@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "parcel ./src/index.html",
     "build:proto": "gen-grpc-web ../proto ./src/grpc"
   },
   "keywords": [],
@@ -17,6 +18,7 @@
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
+    "parcel": "^2.9.3",
     "quick-ts-proto": "^1.0.0"
   }
 }
