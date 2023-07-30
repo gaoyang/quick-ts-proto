@@ -24,6 +24,7 @@ const exampleGrpcServiceImpl: ExampleGrpcServiceServer = {
 
 const server = new Server()
 server.addService(ExampleGrpcServiceService, exampleGrpcServiceImpl)
-server.bindAsync('localhost:5555', ServerCredentials.createInsecure(), () => {
+server.bindAsync('localhost:5555', ServerCredentials.createInsecure(), (_, port) => {
   server.start()
+  console.log(`listening localhost:${port}`)
 })
