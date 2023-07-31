@@ -4,7 +4,7 @@ import {
   ExampleGrpcServiceService,
   LoginResponse,
   SubscribeUserInfoChangedResponse
-} from './grpc/example'
+} from './grpc-server/example'
 
 const exampleGrpcServiceImpl: ExampleGrpcServiceServer = {
   login(call, callback) {
