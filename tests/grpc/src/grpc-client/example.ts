@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { handleServerStreamingCall, handleUnaryCall, UntypedServiceImplementation } from "@grpc/grpc-js";
 import * as _m0 from "protobufjs/minimal";
+import { Observable } from "rxjs";
 import { Empty } from "./google/protobuf/empty";
 
 export const protobufPackage = "";
@@ -213,32 +213,9 @@ export const SubscribeUserInfoChangedResponse = {
   },
 };
 
-export type ExampleGrpcServiceService = typeof ExampleGrpcServiceService;
-export const ExampleGrpcServiceService = {
-  login: {
-    path: "/ExampleGrpcService/Login",
-    requestStream: false,
-    responseStream: false,
-    requestSerialize: (value: LoginRequest) => Buffer.from(LoginRequest.encode(value).finish()),
-    requestDeserialize: (value: Buffer) => LoginRequest.decode(value),
-    responseSerialize: (value: LoginResponse) => Buffer.from(LoginResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => LoginResponse.decode(value),
-  },
-  subscribeUserInfoChanged: {
-    path: "/ExampleGrpcService/SubscribeUserInfoChanged",
-    requestStream: false,
-    responseStream: true,
-    requestSerialize: (value: Empty) => Buffer.from(Empty.encode(value).finish()),
-    requestDeserialize: (value: Buffer) => Empty.decode(value),
-    responseSerialize: (value: SubscribeUserInfoChangedResponse) =>
-      Buffer.from(SubscribeUserInfoChangedResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => SubscribeUserInfoChangedResponse.decode(value),
-  },
-} as const;
-
-export interface ExampleGrpcServiceServer extends UntypedServiceImplementation {
-  login: handleUnaryCall<LoginRequest, LoginResponse>;
-  subscribeUserInfoChanged: handleServerStreamingCall<Empty, SubscribeUserInfoChangedResponse>;
+export interface ExampleGrpcService {
+  Login(request: LoginRequest): Promise<LoginResponse>;
+  SubscribeUserInfoChanged(request: Empty): Observable<SubscribeUserInfoChangedResponse>;
 }
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;

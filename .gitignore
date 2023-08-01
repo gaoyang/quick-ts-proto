@@ -3,3 +3,4 @@
 yalc.lock
 .parcel-cache
 dist
+.DS_Store

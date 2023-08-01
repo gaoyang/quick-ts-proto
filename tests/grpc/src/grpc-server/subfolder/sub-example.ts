@@ -1,16 +1,5 @@
 /* eslint-disable */
-import {
-  CallOptions,
-  ChannelCredentials,
-  Client,
-  ClientOptions,
-  ClientUnaryCall,
-  handleUnaryCall,
-  makeGenericClientConstructor,
-  Metadata,
-  ServiceError,
-  UntypedServiceImplementation,
-} from "@grpc/grpc-js";
+import { handleUnaryCall, UntypedServiceImplementation } from "@grpc/grpc-js";
 import { Empty } from "../google/protobuf/empty";
 
 export const protobufPackage = "";
@@ -31,26 +20,3 @@ export const SubExampleGrpcServiceService = {
 export interface SubExampleGrpcServiceServer extends UntypedServiceImplementation {
   test: handleUnaryCall<Empty, Empty>;
 }
-
-export interface SubExampleGrpcServiceClient extends Client {
-  test(request: Empty, callback: (error: ServiceError | null, response: Empty) => void): ClientUnaryCall;
-  test(
-    request: Empty,
-    metadata: Metadata,
-    callback: (error: ServiceError | null, response: Empty) => void,
-  ): ClientUnaryCall;
-  test(
-    request: Empty,
-    metadata: Metadata,
-    options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: Empty) => void,
-  ): ClientUnaryCall;
-}
-
-export const SubExampleGrpcServiceClient = makeGenericClientConstructor(
-  SubExampleGrpcServiceService,
-  "SubExampleGrpcService",
-) as unknown as {
-  new (address: string, credentials: ChannelCredentials, options?: Partial<ClientOptions>): SubExampleGrpcServiceClient;
-  service: typeof SubExampleGrpcServiceService;
-};
