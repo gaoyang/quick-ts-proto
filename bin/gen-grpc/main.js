@@ -44,9 +44,11 @@ module.exports = function genGrpc(args, stdout, stderr) {
     if (args[2] === '--server') {
       command.push(`--ts_proto_opt=outputServices=grpc-js,outputClientImpl=false`)
     }
-
-    if (args[2] === '--client') {
-      command.push(`--ts_proto_opt=outputClientImpl=grpc-js`)
+    else if (args[2] === '--client') {
+      command.push(`--ts_proto_opt=outputClientImpl=true`)
+    }
+    else {
+      command.push(`--ts_proto_opt=outputServices=grpc-js`)
     }
 
     command.push(`-I=${protoDir} ${protoDir}/*.proto`)

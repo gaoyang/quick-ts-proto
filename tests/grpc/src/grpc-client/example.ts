@@ -1,6 +1,7 @@
 /* eslint-disable */
 import * as _m0 from "protobufjs/minimal";
 import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { Empty } from "./google/protobuf/empty";
 
 export const protobufPackage = "";
@@ -216,6 +217,36 @@ export const SubscribeUserInfoChangedResponse = {
 export interface ExampleGrpcService {
   Login(request: LoginRequest): Promise<LoginResponse>;
   SubscribeUserInfoChanged(request: Empty): Observable<SubscribeUserInfoChangedResponse>;
+}
+
+export const ExampleGrpcServiceServiceName = "ExampleGrpcService";
+export class ExampleGrpcServiceClientImpl implements ExampleGrpcService {
+  private readonly rpc: Rpc;
+  private readonly service: string;
+  constructor(rpc: Rpc, opts?: { service?: string }) {
+    this.service = opts?.service || ExampleGrpcServiceServiceName;
+    this.rpc = rpc;
+    this.Login = this.Login.bind(this);
+    this.SubscribeUserInfoChanged = this.SubscribeUserInfoChanged.bind(this);
+  }
+  Login(request: LoginRequest): Promise<LoginResponse> {
+    const data = LoginRequest.encode(request).finish();
+    const promise = this.rpc.request(this.service, "Login", data);
+    return promise.then((data) => LoginResponse.decode(_m0.Reader.create(data)));
+  }
+
+  SubscribeUserInfoChanged(request: Empty): Observable<SubscribeUserInfoChangedResponse> {
+    const data = Empty.encode(request).finish();
+    const result = this.rpc.serverStreamingRequest(this.service, "SubscribeUserInfoChanged", data);
+    return result.pipe(map((data) => SubscribeUserInfoChangedResponse.decode(_m0.Reader.create(data))));
+  }
+}
+
+interface Rpc {
+  request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
+  clientStreamingRequest(service: string, method: string, data: Observable<Uint8Array>): Promise<Uint8Array>;
+  serverStreamingRequest(service: string, method: string, data: Uint8Array): Observable<Uint8Array>;
+  bidirectionalStreamingRequest(service: string, method: string, data: Observable<Uint8Array>): Observable<Uint8Array>;
 }
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
