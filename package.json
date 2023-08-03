@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "grpc-tools": "^1.12.4",
-    "ts-proto": "^1.156.1"
+    "ts-proto": "^1.156.2"
   },
   "files": [
     "bin"
