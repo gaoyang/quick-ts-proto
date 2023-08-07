@@ -83,9 +83,8 @@ export const LoginRequest = {
   },
 
   create<I extends Exact<DeepPartial<LoginRequest>, I>>(base?: I): LoginRequest {
-    return LoginRequest.fromPartial(base ?? {});
+    return LoginRequest.fromPartial(base ?? ({} as any));
   },
-
   fromPartial<I extends Exact<DeepPartial<LoginRequest>, I>>(object: I): LoginRequest {
     const message = createBaseLoginRequest();
     message.username = object.username ?? "";
@@ -142,9 +141,8 @@ export const LoginResponse = {
   },
 
   create<I extends Exact<DeepPartial<LoginResponse>, I>>(base?: I): LoginResponse {
-    return LoginResponse.fromPartial(base ?? {});
+    return LoginResponse.fromPartial(base ?? ({} as any));
   },
-
   fromPartial<I extends Exact<DeepPartial<LoginResponse>, I>>(object: I): LoginResponse {
     const message = createBaseLoginResponse();
     message.success = object.success ?? false;
@@ -202,9 +200,8 @@ export const SubscribeUserInfoChangedResponse = {
   create<I extends Exact<DeepPartial<SubscribeUserInfoChangedResponse>, I>>(
     base?: I,
   ): SubscribeUserInfoChangedResponse {
-    return SubscribeUserInfoChangedResponse.fromPartial(base ?? {});
+    return SubscribeUserInfoChangedResponse.fromPartial(base ?? ({} as any));
   },
-
   fromPartial<I extends Exact<DeepPartial<SubscribeUserInfoChangedResponse>, I>>(
     object: I,
   ): SubscribeUserInfoChangedResponse {

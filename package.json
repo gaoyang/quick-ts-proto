@@ -8,6 +8,7 @@
     "gen-grpc-web": "./bin/gen-grpc-web/index.js"
   },
   "scripts": {
+    "test:gen-grpc": "node ./bin/gen-grpc/index.js ./tests/proto ./tests/grpc/src/grpc",
     "test:gen-grpc:server": "node ./bin/gen-grpc/index.js ./tests/proto ./tests/grpc/src/grpc-server --server",
     "test:gen-grpc:client": "node ./bin/gen-grpc/index.js ./tests/proto ./tests/grpc/src/grpc-client --client",
     "test:gen-grpc-web": "node ./bin/gen-grpc-web/index.js ./tests/proto ./tests/grpc-web/src/grpc"
