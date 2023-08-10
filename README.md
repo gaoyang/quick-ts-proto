@@ -16,7 +16,42 @@ $ yarn add quick-ts-proto --dev
 
 ### CLI Commands
 
-This `quick-ts-proto` package currently provides 1 CLI commands.
+This `quick-ts-proto` package currently provides 2 CLI commands.
+
+- [gen-grpc](#gen-grpc-command)
+- [gen-grpc-web](#gen-grpc-web-command)
+
+#### 'gen-grpc' command
+```
+Usage:
+  $ gen-grpc [--help | -h | --version | -v]
+  $ gen-grpc [protobufDir] [outDir] [OPTIONS]
+
+  Generate grpc code based on protobuf files.
+
+  <protobufDir> : A folder containing protobuf files (*.proto).
+
+  <outDir> : The output directory of TypeScript code.
+
+  <OPTIONS> : Generates server and client code by default.
+
+Options:
+  --server       - - - - - - generate server code only.
+
+  --client       - - - - - - generate client code only.
+
+Examples:
+  $ gen-grpc ./proto ./src/grpc
+```
+
+Install necessary tools:
+```
+# [server]
+npm install protobufjs @grpc/grpc-js
+
+# [client]
+npm install protobufjs rxjs
+```
 
 #### `gen-grpc-web` command
 

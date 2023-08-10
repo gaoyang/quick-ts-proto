@@ -1,10 +1,11 @@
 {
   "name": "quick-ts-proto",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A CLI tool to quickly generate gRPC code.",
   "author": "gaoyang",
   "main": "index.js",
   "bin": {
+    "gen-grpc": "./bin/gen-grpc/index.js",
     "gen-grpc-web": "./bin/gen-grpc-web/index.js"
   },
   "scripts": {
@@ -25,7 +26,8 @@
     "proto",
     "protobuf",
     "typescript-protobuf",
-    "grpc-web"
+    "grpc-web",
+    "grpc"
   ],
   "license": "MIT",
   "repository": "gaoyang/quick-ts-proto",

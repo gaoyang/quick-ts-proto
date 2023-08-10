@@ -12,12 +12,15 @@ Usage:
 
   <outDir> : The output directory of TypeScript code.
 
+  <OPTIONS> : Generates server and client code by default.
+
 Options:
-  --only-types   - - - - - - the Message.encode and Message.decode methods for
-                             working with protobuf-encoded/binary data will not be output.
+  --server       - - - - - - generate server code only.
+
+  --client       - - - - - - generate client code only.
 
 Examples:
-  $ gen-grpc-web ./proto ./src/grpc
+  $ gen-grpc ./proto ./src/grpc
 `)
 
   return Promise.resolve(null)
