@@ -6,7 +6,9 @@
   "scripts": {
     "dev:server": "ts-node ./src/server.ts",
     "dev:client": "ts-node ./src/client.ts",
-    "build:proto": "gen-grpc ../proto ./src/grpc"
+    "build:proto": "gen-grpc ../proto ./src/grpc",
+    "build:proto-server": "gen-grpc ../proto ./src/grpc-server --server",
+    "build:proto-client": "gen-grpc ../proto ./src/grpc-client --client"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
   "devDependencies": {
     "@grpc/grpc-js": "^1.9.0",
     "protobufjs": "^7.2.4",
+    "quick-ts-proto": "^1.0.4",
     "rxjs": "^7.8.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
