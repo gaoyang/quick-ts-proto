@@ -48,8 +48,13 @@ module.exports = function genGrpcWeb(args, stdout, stderr) {
 
     command.push(`-I=${protoDir} ${protoDir}/*.proto`)
     getDirs(protoDir).forEach(dir => {
-      console.log(dir);
-      command.push(` ${dir}/*.proto`)
+      const files = fs.readdirSync(dir)
+      for (const file of files) {
+        if (path.extname(file).toLowerCase() === '.proto') {
+          command.push(` ${dir}/*.proto`)
+          return
+        }
+      }
     })
 
     const promise = new Promise((resolve, reject) => {
